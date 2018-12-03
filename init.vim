@@ -1,3 +1,4 @@
+"====================Vundle======================================
 set nocompatible              " be iMproved, required
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
@@ -28,14 +29,12 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " All of your Plugins must be added before the following line
 
-" ==============Common Plugins==================================
+" =================Common Plugins================================
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sheerun/vim-polyglot' "Collection of lang. packs
-"Plugin 'posva/vim-vue'
-"Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'mattn/emmet-vim'
@@ -44,8 +43,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'w0rp/ale'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'mxw/vim-jsx'
-Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
-" ==============Common Plugins==================================
+"Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
+" ==============================================================
 
 " =======================Snippets===============================
 Plugin 'SirVer/ultisnips'
@@ -67,9 +66,9 @@ else
   Plugin 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
-"========================Completions============================
+"===============================================================
 
-"==========THEMES================
+"========================THEMES=================================
 Plugin 'nightsense/office'
 Plugin 'nightsense/simplifysimplify'
 Plugin 'felipesousa/rupza'
@@ -78,21 +77,10 @@ Plugin 'skielbasa/vim-material-monokai'
 "Plugin 'sickill/vim-monokai'
 Plugin 'lifepillar/vim-solarized8'
 Plugin 'crusoexia/vim-monokai'
-"================================
+"===============================================================
 
+"=======================Common settings=========================
 call vundle#end()            " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"Plugin 'othree/javascript-libraries-syntax.vim'
 " Ru map keys
 set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;!@#$%&*`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 set number
@@ -105,18 +93,59 @@ set tabstop=2
 syntax enable
 filetype plugin indent on    " required
 let coffee_indent_keep_current = 1
-"=======================Display settings===========================================================
-set background=dark
+"===============================================================
+
+"========================Display settings=======================
+set background=light
 set termguicolors
-colorscheme monokai
-"=======================Display settings===========================================================
-"=======================Airline settings===========================================================
-let g:airline_theme='molokai'
+colorscheme office-light 
+"===============================================================
+
+"=========================ON_START==============================
+"for ruby, autoindent with two spaces, always expand tabs
+autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,coffee,vue set ai sw=2 sts=2 et
+"autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.coffeescript
+"autocmd FileType vue syntax sync fromstart
+au VimEnter * :NERDTreeCWD
+"===============================================================
+
+"=========================MAPPINGS==============================
+map <F8> :NERDTreeToggle <CR>
+map <F7> :NERDTreeFind <CR> 
+"===============================================================
+
+"=========================Clipboard=============================
+"nvim Clipboard?
+if has('nvim')
+ set clipboard+=unnamedplus
+endif
+"===============================================================
+
+"-------------------------PLUGINS-------------------------------
+"///////////////////////////////////////////////////////////////
+"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+"---------------------------------------------------------------
+
+"=========================Airline settings======================
+let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1 "Needs to be installed https://github.com/powerline/fonts
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
-"===========================================Emmet======================================================
+"===============================================================
+
+"=========================ALE===================================
+" Fix files with prettier, and then ESLint.
+let g:ale_fixers = ['prettier', 'eslint']
+" Set this variable to 1 to fix files when you save them.
+let g:ale_fix_on_save = 1
+" Signs Text
+let g:ale_sign_error = 'XX'
+let g:ale_sign_warning = '!!'
+"===============================================================
+
+"=========================Emmet=================================
 let g:user_emmet_install_global = 1
 let g:user_emmet_leader_key='<C-Y>'
 let g:user_emmet_mode='a' "enable all function in all mode.
@@ -126,28 +155,15 @@ let g:user_emmet_mode='a' "enable all function in all mode.
     "\  },
   "\}
 autocmd FileType html,css,javascript.jsx EmmetInstall
-"======================================================================================================
-"for ruby, autoindent with two spaces, always expand tabs
-autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,coffee,vue set ai sw=2 sts=2 et
-"autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.coffeescript
-"autocmd FileType vue syntax sync fromstart
-au VimEnter * :NERDTreeCWD
-"=========================================MAPPINGS=================================
-map <F8> :NERDTreeToggle <CR>
-map <F7> :NERDTreeFind <CR> 
-"==================================================================================
-"nvim Clipboard?
-if has('nvim')
- set clipboard+=unnamedplus
-endif
-"=======================CTRL-P plugin settings================
+"===============================================================
+
+"=========================CTRL-P plugin settings================
 "ignore directories and files
 "let g:ctrlp_custom_ignore = {
 "      \'dir':  '/node_modules',
 "      \'file': '\v\.(exe|so|dll)$',
 "      \'link': 'some_bad_symbolic_links',
 "}
-"=============================================================
 if executable('ag')
     " Use Ag over Grep
     set grepprg=ag\ --nogroup\ --nocolor
@@ -161,3 +177,4 @@ if executable('ag')
     " ag is fast enough that CtrlP doesn't need to cache
     let g:ctrlp_use_caching = 0
 endif
+"===============================================================
