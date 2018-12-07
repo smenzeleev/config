@@ -33,7 +33,6 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'jlanzarotta/bufexplorer'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sheerun/vim-polyglot' "Collection of lang. packs
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -43,6 +42,10 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'w0rp/ale'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'mxw/vim-jsx'
+Plugin 'tpope/vim-surround' "Surrounding parentheses, brackets and etc. Usage: cs[old_parantheses][new_parentheses]
+Plugin 'yggdroot/indentline' "Shows indent guides
+Plugin 'raimondi/delimitmate' "Provides automatic closing of quotes, parenthesis, brackets, etc.
+Plugin 'yuttie/comfortable-motion.vim' "Brings physics-based smooth scrolling to the Vim/Neovim world!
 "Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 " ==============================================================
 
@@ -77,6 +80,7 @@ Plugin 'skielbasa/vim-material-monokai'
 "Plugin 'sickill/vim-monokai'
 Plugin 'lifepillar/vim-solarized8'
 Plugin 'crusoexia/vim-monokai'
+Plugin 'vim-airline/vim-airline-themes'
 "===============================================================
 
 "=======================Common settings=========================
@@ -177,4 +181,8 @@ if executable('ag')
     " ag is fast enough that CtrlP doesn't need to cache
     let g:ctrlp_use_caching = 0
 endif
+"===============================================================
+
+"===========================IndentLine=======================
+" https://vimawesome.com/plugin/indentline
 "===============================================================
