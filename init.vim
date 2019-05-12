@@ -32,20 +32,21 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " =================Common Plugins================================
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
-Plugin 'jlanzarotta/bufexplorer'
 Plugin 'sheerun/vim-polyglot' "Collection of lang. packs
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'mattn/emmet-vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'w0rp/ale'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'mxw/vim-jsx'
-Plugin 'tpope/vim-surround' "Surrounding parentheses, brackets and etc. Usage: cs[old_parantheses][new_parentheses]
 Plugin 'yggdroot/indentline' "Shows indent guides
-Plugin 'raimondi/delimitmate' "Provides automatic closing of quotes, parenthesis, brackets, etc.
-Plugin 'yuttie/comfortable-motion.vim' "Brings physics-based smooth scrolling to the Vim/Neovim world!
+Plugin 'vimwiki/vimwiki' "Personal Wiki for Vim http://vimwiki.github.io/
+Plugin 'mattn/emmet-vim' "Configuration need
+"Plugin 'jlanzarotta/bufexplorer' "Not need;
+"Plugin 'mxw/vim-jsx' "Not need
+"Plugin 'tpope/vim-surround' "Not need;Surrounding parentheses, brackets and etc. Usage: cs[old_parantheses][new_parentheses]
+"Plugin 'raimondi/delimitmate' "Provides automatic closing of quotes, parenthesis, brackets, etc.
+"Plugin 'yuttie/comfortable-motion.vim' "Brings physics-based smooth scrolling to the Vim/Neovim world!
 "Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 " ==============================================================
 
@@ -81,6 +82,7 @@ Plugin 'skielbasa/vim-material-monokai'
 Plugin 'lifepillar/vim-solarized8'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'morhetz/gruvbox'
 "===============================================================
 
 "=======================Common settings=========================
@@ -89,6 +91,7 @@ call vundle#end()            " required
 set langmap=!\\"№\\;%?*ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;!@#$%&*`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 set number
 set noswapfile
+set backupcopy=yes "https://webpack.js.org/configuration/watch/#vim
 set winwidth=120
 set nowrap "word wrapping
 set tabstop=2
@@ -100,9 +103,9 @@ let coffee_indent_keep_current = 1
 "===============================================================
 
 "========================Display settings=======================
-set background=light
+set background=dark
 set termguicolors
-colorscheme office-light 
+colorscheme gruvbox
 "===============================================================
 
 "=========================ON_START==============================
@@ -110,7 +113,7 @@ colorscheme office-light
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,coffee,vue set ai sw=2 sts=2 et
 "autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.coffeescript
 "autocmd FileType vue syntax sync fromstart
-au VimEnter * :NERDTreeCWD
+"au VimEnter * :NERDTreeCWD
 "===============================================================
 
 "=========================MAPPINGS==============================
@@ -131,7 +134,7 @@ endif
 "---------------------------------------------------------------
 
 "=========================Airline settings======================
-let g:airline_theme='solarized'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1 "Needs to be installed https://github.com/powerline/fonts
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
@@ -153,11 +156,11 @@ let g:ale_sign_warning = '!!'
 let g:user_emmet_install_global = 1
 let g:user_emmet_leader_key='<C-Y>'
 let g:user_emmet_mode='a' "enable all function in all mode.
-"let g:user_emmet_settings = {
-  "\  'javascript.jsx' : {
-    "\      'extends' : 'jsx',
-    "\  },
-  "\}
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
 autocmd FileType html,css,javascript.jsx EmmetInstall
 "===============================================================
 
