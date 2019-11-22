@@ -33,29 +33,20 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'sheerun/vim-polyglot' "Collection of lang. packs
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-commentary'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'w0rp/ale'
-Plugin 'Chiel92/vim-autoformat'
 Plugin 'yggdroot/indentline' "Shows indent guides
-Plugin 'vimwiki/vimwiki' "Personal Wiki for Vim http://vimwiki.github.io/
 Plugin 'mattn/emmet-vim' "Configuration need
-"Plugin 'jlanzarotta/bufexplorer' "Not need;
-"Plugin 'mxw/vim-jsx' "Not need
-"Plugin 'tpope/vim-surround' "Not need;Surrounding parentheses, brackets and etc. Usage: cs[old_parantheses][new_parentheses]
-"Plugin 'raimondi/delimitmate' "Provides automatic closing of quotes, parenthesis, brackets, etc.
-"Plugin 'yuttie/comfortable-motion.vim' "Brings physics-based smooth scrolling to the Vim/Neovim world!
-"Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plugin 'ryanoasis/vim-devicons' "Icons for nerdtree and etc.
 " ==============================================================
 
 " =======================Snippets===============================
 Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'isRuslan/vim-es6'
-"Plugin 'justinj/vim-react-snippets'
 Plugin 'smenzeleev/vim-react-snippets'
+Plugin 'file:///home/smenzeleev/development/vim-js-snippets'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -69,6 +60,7 @@ else
   Plugin 'roxma/nvim-yarp'
   Plugin 'roxma/vim-hug-neovim-rpc'
 endif
+Plugin 'Shougo/neco-syntax'
 let g:deoplete#enable_at_startup = 1
 "===============================================================
 
@@ -78,11 +70,13 @@ Plugin 'nightsense/simplifysimplify'
 Plugin 'felipesousa/rupza'
 Plugin 'rakr/vim-one'
 Plugin 'skielbasa/vim-material-monokai'
-"Plugin 'sickill/vim-monokai'
 Plugin 'lifepillar/vim-solarized8'
 Plugin 'crusoexia/vim-monokai'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'morhetz/gruvbox'
+Plugin 'tomasiser/vim-code-dark'
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'doums/darcula'
 "===============================================================
 
 "=======================Common settings=========================
@@ -97,6 +91,7 @@ set nowrap "word wrapping
 set tabstop=2
 "set linebreak
 "set nolist  " list disables linebreak
+set backspace=indent,eol,start "https://vi.stackexchange.com/questions/2162/why-doesnt-the-backspace-key-work-in-insert-mode
 syntax enable
 filetype plugin indent on    " required
 let coffee_indent_keep_current = 1
@@ -105,14 +100,16 @@ let coffee_indent_keep_current = 1
 "========================Display settings=======================
 set background=dark
 set termguicolors
-colorscheme gruvbox
+colorscheme codedark
 "===============================================================
 
 "=========================ON_START==============================
 "for ruby, autoindent with two spaces, always expand tabs
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,coffee,vue set ai sw=2 sts=2 et
+au BufNewFile, BufRead *.graphql setfiletype graphql
 "autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.coffeescript
 "autocmd FileType vue syntax sync fromstart
+autocmd BufEnter * :syntax sync fromstart " fixes vim randomly turns off syntax highlighting
 "au VimEnter * :NERDTreeCWD
 "===============================================================
 
@@ -126,6 +123,9 @@ map <F7> :NERDTreeFind <CR>
 if has('nvim')
  set clipboard+=unnamedplus
 endif
+if has('clipboard')
+ set clipboard=unnamedplus
+endif
 "===============================================================
 
 "-------------------------PLUGINS-------------------------------
@@ -134,7 +134,7 @@ endif
 "---------------------------------------------------------------
 
 "=========================Airline settings======================
-let g:airline_theme='gruvbox'
+let g:airline_theme='codedark'
 let g:airline_powerline_fonts = 1 "Needs to be installed https://github.com/powerline/fonts
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
@@ -148,8 +148,8 @@ let g:ale_fixers = ['prettier', 'eslint']
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
 " Signs Text
-let g:ale_sign_error = 'XX'
-let g:ale_sign_warning = '!!'
+let g:ale_sign_error = '🤬'
+let g:ale_sign_warning = '🤨'
 "===============================================================
 
 "=========================Emmet=================================
