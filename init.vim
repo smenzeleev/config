@@ -1,7 +1,8 @@
 "====================Autoinstall vim-plug========================
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+let glob_url = has('nvim') ? '~/.local/share/nvim/site/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
+let url = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if empty(glob(glob_url))
+  :exe "!curl -fLo " . glob_url . " --create-dirs " . url
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 "================================================================
@@ -67,7 +68,7 @@ colorscheme base16-gruvbox-dark-hard
 
 "=========================AUTOCOMMANDS==========================
 "for ruby, autoindent with two spaces, always expand tabs
-autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,coffee,vue set ai sw=2 sts=2 et
+autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber,coffee,vue,vim set ai sw=2 sts=2 et
 au BufNewFile, BufRead *.graphql setfiletype graphql
 "autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.coffeescript
 "autocmd FileType vue syntax sync fromstart
