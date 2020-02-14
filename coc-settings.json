@@ -1,0 +1,7 @@
+{
+  "json.enable": true,
+  "javascript.validate.enable": false,
+  "javascript.format.enabled": false,
+  "flow.enable": true,
+  "flow.pathToFlow": "~/.yarn/bin/flow"
+}
