@@ -24,7 +24,7 @@ Plug 'ryanoasis/vim-devicons' "Icons for nerdtree and etc.
 Plug 'scrooloose/nerdtree' " enhanced netrw(file explorer)
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 " ========================COC-PLUGINS============================
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fannheyward/coc-marketplace',
@@ -40,7 +40,8 @@ Plug 'neoclide/coc-tsserver', { 'do': 'yarn install --frozen-lockfile'}
 "
 
 "========================THEMES=================================
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
+Plug 'endel/vim-github-colorscheme'
 "===============================================================
 
 call plug#end()
@@ -65,9 +66,9 @@ let coffee_indent_keep_current = 1
 "===============================================================
 
 "========================Display settings=======================
-set background=dark
+set background=light
 set termguicolors
-colorscheme base16-gruvbox-dark-hard
+colorscheme github
 "===============================================================
 
 "=========================AUTOCOMMANDS==========================
