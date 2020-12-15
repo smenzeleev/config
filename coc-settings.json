@@ -1,7 +1,10 @@
 {
-  "json.enable": true,
-  "javascript.validate.enable": false,
-  "javascript.format.enabled": false,
-  "flow.enable": true,
-  "flow.pathToFlow": "~/.yarn/bin/flow"
+  "coc.preferences.formatOnSaveFiletypes": ["typescript", "typescriptreact", "javascript", "javascriptreact", "graphql", "python"],
+  "coc.preferences.jumpCommand": "tab drop",
+  "eslint.run": "onSave",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintPath": "/home/sergo/.pyenv/shims/pylint",
+  "python.jediEnabled": false,
+  "python.pipenvPath": "pipenv"
 }

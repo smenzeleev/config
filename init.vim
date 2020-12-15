@@ -40,8 +40,8 @@ Plug 'neoclide/coc-tsserver', { 'do': 'yarn install --frozen-lockfile'}
 "
 
 "========================THEMES=================================
-" Plug 'chriskempson/base16-vim'
-Plug 'endel/vim-github-colorscheme'
+Plug 'chriskempson/base16-vim'
+" Plug 'endel/vim-github-colorscheme'
 "===============================================================
 
 call plug#end()
@@ -66,9 +66,9 @@ let coffee_indent_keep_current = 1
 "===============================================================
 
 "========================Display settings=======================
-set background=light
+set background=dark
 set termguicolors
-colorscheme github
+colorscheme base16-brewer
 "===============================================================
 
 "=========================AUTOCOMMANDS==========================
@@ -104,7 +104,7 @@ let g:NERDTreeAutoDeleteBuffer = 1
 "=========================NERDTree settings======================
 "
 "=========================Airline settings======================
-let g:airline_theme='base16_gruvbox_dark_hard'
+let g:airline_theme='base16_brewer'
 let g:airline_powerline_fonts = 1 "Needs to be installed https://github.com/powerline/fonts
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
